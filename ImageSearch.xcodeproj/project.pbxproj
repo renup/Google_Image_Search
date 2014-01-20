@@ -22,11 +22,16 @@
 		AF986E7A1889BCA700A8D42C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AF986E781889BCA700A8D42C /* InfoPlist.strings */; };
 		AF986E7C1889BCA700A8D42C /* ImageSearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AF986E7B1889BCA700A8D42C /* ImageSearchTests.m */; };
 		AF986E861889E4EE00A8D42C /* searchTextField.png in Resources */ = {isa = PBXBuildFile; fileRef = AF986E851889E4EE00A8D42C /* searchTextField.png */; };
-		AF986E931889ECD500A8D42C /* RP_GridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF986E921889ECD500A8D42C /* RP_GridViewController.m */; };
-		AF986E96188A3D3600A8D42C /* UIImage+ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AF986E95188A3D3600A8D42C /* UIImage+ImageManager.m */; };
 		AF986E99188AC03D00A8D42C /* GoogleImageApiHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AF986E98188AC03D00A8D42C /* GoogleImageApiHelper.m */; };
 		AF986E9C188ACB7300A8D42C /* RPImageContent.m in Sources */ = {isa = PBXBuildFile; fileRef = AF986E9B188ACB7300A8D42C /* RPImageContent.m */; };
 		AF986EA0188B352B00A8D42C /* RPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = AF986E9F188B352B00A8D42C /* RPConstants.m */; };
+		AF986EA3188B660F00A8D42C /* RPDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF986EA2188B660F00A8D42C /* RPDetailViewController.m */; };
+		AF986EA6188B6D6900A8D42C /* FileDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AF986EA5188B6D6900A8D42C /* FileDownloadManager.m */; };
+		AF986EAA188B894E00A8D42C /* RPBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF986EA9188B894E00A8D42C /* RPBaseCell.m */; };
+		AF986EAD188C810100A8D42C /* AppCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF986EAC188C810100A8D42C /* AppCache.m */; };
+		AF986EB0188CFDBD00A8D42C /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = AF986EAE188CFDBD00A8D42C /* Placeholder.png */; };
+		AF986EB1188CFDBD00A8D42C /* Placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF986EAF188CFDBD00A8D42C /* Placeholder@2x.png */; };
+		AF986EB4188D164A00A8D42C /* UIImage+ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AF986EB3188D164A00A8D42C /* UIImage+ImageManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,16 +65,24 @@
 		AF986E791889BCA700A8D42C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AF986E7B1889BCA700A8D42C /* ImageSearchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageSearchTests.m; sourceTree = "<group>"; };
 		AF986E851889E4EE00A8D42C /* searchTextField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchTextField.png; sourceTree = "<group>"; };
-		AF986E911889ECD500A8D42C /* RP_GridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RP_GridViewController.h; sourceTree = "<group>"; };
-		AF986E921889ECD500A8D42C /* RP_GridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RP_GridViewController.m; sourceTree = "<group>"; };
-		AF986E94188A3D3600A8D42C /* UIImage+ImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageManager.h"; sourceTree = "<group>"; };
-		AF986E95188A3D3600A8D42C /* UIImage+ImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageManager.m"; sourceTree = "<group>"; };
 		AF986E97188AC03D00A8D42C /* GoogleImageApiHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleImageApiHelper.h; sourceTree = "<group>"; };
 		AF986E98188AC03D00A8D42C /* GoogleImageApiHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleImageApiHelper.m; sourceTree = "<group>"; };
 		AF986E9A188ACB7300A8D42C /* RPImageContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPImageContent.h; path = ../RPImageContent.h; sourceTree = "<group>"; };
 		AF986E9B188ACB7300A8D42C /* RPImageContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPImageContent.m; path = ../RPImageContent.m; sourceTree = "<group>"; };
 		AF986E9E188B352B00A8D42C /* RPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPConstants.h; sourceTree = "<group>"; };
 		AF986E9F188B352B00A8D42C /* RPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPConstants.m; sourceTree = "<group>"; };
+		AF986EA1188B660F00A8D42C /* RPDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPDetailViewController.h; sourceTree = "<group>"; };
+		AF986EA2188B660F00A8D42C /* RPDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPDetailViewController.m; sourceTree = "<group>"; };
+		AF986EA4188B6D6900A8D42C /* FileDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownloadManager.h; sourceTree = "<group>"; };
+		AF986EA5188B6D6900A8D42C /* FileDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDownloadManager.m; sourceTree = "<group>"; };
+		AF986EA8188B894E00A8D42C /* RPBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPBaseCell.h; sourceTree = "<group>"; };
+		AF986EA9188B894E00A8D42C /* RPBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPBaseCell.m; sourceTree = "<group>"; };
+		AF986EAB188C810100A8D42C /* AppCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppCache.h; sourceTree = "<group>"; };
+		AF986EAC188C810100A8D42C /* AppCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCache.m; sourceTree = "<group>"; };
+		AF986EAE188CFDBD00A8D42C /* Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder.png; sourceTree = "<group>"; };
+		AF986EAF188CFDBD00A8D42C /* Placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Placeholder@2x.png"; sourceTree = "<group>"; };
+		AF986EB2188D164A00A8D42C /* UIImage+ImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageManager.h"; sourceTree = "<group>"; };
+		AF986EB3188D164A00A8D42C /* UIImage+ImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageManager.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +142,7 @@
 		AF986E561889BCA600A8D42C /* ImageSearch */ = {
 			isa = PBXGroup;
 			children = (
+				AF986EA7188B88F500A8D42C /* Views */,
 				AF986E9D188ACB8100A8D42C /* Model Classes */,
 				AF986E8F1889E80B00A8D42C /* ViewControllers */,
 				AF986E8E1889E72A00A8D42C /* Helper Class */,
@@ -144,6 +158,8 @@
 		AF986E571889BCA600A8D42C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AF986EAE188CFDBD00A8D42C /* Placeholder.png */,
+				AF986EAF188CFDBD00A8D42C /* Placeholder@2x.png */,
 				AF986E851889E4EE00A8D42C /* searchTextField.png */,
 				AF986E581889BCA600A8D42C /* ImageSearch-Info.plist */,
 				AF986E591889BCA600A8D42C /* InfoPlist.strings */,
@@ -174,10 +190,12 @@
 		AF986E8E1889E72A00A8D42C /* Helper Class */ = {
 			isa = PBXGroup;
 			children = (
+				AF986EB2188D164A00A8D42C /* UIImage+ImageManager.h */,
+				AF986EB3188D164A00A8D42C /* UIImage+ImageManager.m */,
+				AF986EA4188B6D6900A8D42C /* FileDownloadManager.h */,
+				AF986EA5188B6D6900A8D42C /* FileDownloadManager.m */,
 				AF986E97188AC03D00A8D42C /* GoogleImageApiHelper.h */,
 				AF986E98188AC03D00A8D42C /* GoogleImageApiHelper.m */,
-				AF986E94188A3D3600A8D42C /* UIImage+ImageManager.h */,
-				AF986E95188A3D3600A8D42C /* UIImage+ImageManager.m */,
 			);
 			name = "Helper Class";
 			sourceTree = "<group>";
@@ -185,8 +203,8 @@
 		AF986E8F1889E80B00A8D42C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				AF986E911889ECD500A8D42C /* RP_GridViewController.h */,
-				AF986E921889ECD500A8D42C /* RP_GridViewController.m */,
+				AF986EA1188B660F00A8D42C /* RPDetailViewController.h */,
+				AF986EA2188B660F00A8D42C /* RPDetailViewController.m */,
 				AF986E651889BCA600A8D42C /* RPViewController.h */,
 				AF986E661889BCA600A8D42C /* RPViewController.m */,
 			);
@@ -196,12 +214,23 @@
 		AF986E9D188ACB8100A8D42C /* Model Classes */ = {
 			isa = PBXGroup;
 			children = (
+				AF986EAB188C810100A8D42C /* AppCache.h */,
+				AF986EAC188C810100A8D42C /* AppCache.m */,
 				AF986E9E188B352B00A8D42C /* RPConstants.h */,
 				AF986E9F188B352B00A8D42C /* RPConstants.m */,
 				AF986E9A188ACB7300A8D42C /* RPImageContent.h */,
 				AF986E9B188ACB7300A8D42C /* RPImageContent.m */,
 			);
 			name = "Model Classes";
+			sourceTree = "<group>";
+		};
+		AF986EA7188B88F500A8D42C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AF986EA8188B894E00A8D42C /* RPBaseCell.h */,
+				AF986EA9188B894E00A8D42C /* RPBaseCell.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,7 +310,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF986EB0188CFDBD00A8D42C /* Placeholder.png in Resources */,
 				AF986E691889BCA600A8D42C /* Images.xcassets in Resources */,
+				AF986EB1188CFDBD00A8D42C /* Placeholder@2x.png in Resources */,
 				AF986E861889E4EE00A8D42C /* searchTextField.png in Resources */,
 				AF986E5B1889BCA600A8D42C /* InfoPlist.strings in Resources */,
 				AF986E641889BCA600A8D42C /* Main.storyboard in Resources */,
@@ -303,13 +334,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF986E931889ECD500A8D42C /* RP_GridViewController.m in Sources */,
 				AF986E99188AC03D00A8D42C /* GoogleImageApiHelper.m in Sources */,
 				AF986E611889BCA600A8D42C /* RPAppDelegate.m in Sources */,
+				AF986EA6188B6D6900A8D42C /* FileDownloadManager.m in Sources */,
 				AF986E9C188ACB7300A8D42C /* RPImageContent.m in Sources */,
+				AF986EB4188D164A00A8D42C /* UIImage+ImageManager.m in Sources */,
 				AF986E5D1889BCA600A8D42C /* main.m in Sources */,
-				AF986E96188A3D3600A8D42C /* UIImage+ImageManager.m in Sources */,
+				AF986EAA188B894E00A8D42C /* RPBaseCell.m in Sources */,
+				AF986EA3188B660F00A8D42C /* RPDetailViewController.m in Sources */,
 				AF986E671889BCA600A8D42C /* RPViewController.m in Sources */,
+				AF986EAD188C810100A8D42C /* AppCache.m in Sources */,
 				AF986EA0188B352B00A8D42C /* RPConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,6 +555,7 @@
 				AF986E811889BCA700A8D42C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AF986E821889BCA700A8D42C /* Build configuration list for PBXNativeTarget "ImageSearchTests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +564,7 @@
 				AF986E841889BCA700A8D42C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

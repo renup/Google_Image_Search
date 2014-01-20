@@ -1,18 +1,22 @@
 //
-//  RP_GridViewController.m
+//  RPDetailViewController.m
 //  ImageSearch
 //
-//  Created by Renu P on 1/17/14.
+//  Created by Renu P on 1/18/14.
 //  Copyright (c) 2014 Renu Punjabi. All rights reserved.
 //
 
-#import "RP_GridViewController.h"
+#import "RPDetailViewController.h"
 
-@interface RP_GridViewController ()
+@interface RPDetailViewController ()
+
+@property (strong, nonatomic) IBOutlet UIImageView *photoView;
 
 @end
 
-@implementation RP_GridViewController
+@implementation RPDetailViewController
+
+@synthesize photoView, fullImageURLString;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +31,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning

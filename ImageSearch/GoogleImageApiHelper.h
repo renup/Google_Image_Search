@@ -10,7 +10,7 @@
 
 @interface GoogleImageApiHelper : NSObject
 
-+ (void)getImagesForSearchInput:(NSString *)searchText withBlock:(void (^)(BOOL succeeded, NSArray *jsonArray, NSError *error))completionBlock;
++ (void)getImagesForSearchInput:(NSString *)searchText withBlock:(void (^)(BOOL succeeded, NSMutableArray *imageContentArray, NSError *error))completionBlock;
 
 
 @end

@@ -14,4 +14,7 @@ extern NSString *const kMatchingSearchText;
 extern NSString *const kThumbImageURLString;
 extern NSString *const kOriginalImageURLString;
 
+# pragma mark - Cell Dimensions
+extern CGFloat const kCellInsetWidth;
+
 @end

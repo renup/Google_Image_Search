@@ -17,7 +17,9 @@
     self.searchResultContentStr = searchResultStr;
     self.thumbURLStr = thumbURLString;
     self.originalImageURLStr = fullImageURLString;
-    
+    self.thumbImage = [UIImage imageNamed:@"Placeholder.png"];
+    self.originalImage = [UIImage imageNamed:@"Placeholder.png"];
+
     return self;
 }
 
