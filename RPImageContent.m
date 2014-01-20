@@ -10,7 +10,7 @@
 
 @implementation RPImageContent
 
-@synthesize searchResultContentStr, thumbURLStr, originalImageURLStr;
+@synthesize searchResultContentStr, thumbURLStr, originalImageURLStr, thumbImage, originalImage, originalImageDownloaded, thumbImageDownloaded;
 
 -(RPImageContent *)initRPImageContentWithImageDetails:(NSString *)searchResultStr itsThumbURLString:(NSString *)thumbURLString andFullImageURLString:(NSString *)fullImageURLString
 {
@@ -19,6 +19,8 @@
     self.originalImageURLStr = fullImageURLString;
     self.thumbImage = [UIImage imageNamed:@"Placeholder.png"];
     self.originalImage = [UIImage imageNamed:@"Placeholder.png"];
+    self.thumbImageDownloaded = NO;
+    self.originalImageDownloaded = NO;
 
     return self;
 }

@@ -15,7 +15,8 @@
 @property (nonatomic, copy)NSString *originalImageURLStr;
 @property (nonatomic, copy)UIImage *thumbImage;
 @property (nonatomic, copy)UIImage *originalImage;
-
+@property (nonatomic, assign)BOOL thumbImageDownloaded;
+@property (nonatomic, assign)BOOL originalImageDownloaded;
 
 -(RPImageContent *)initRPImageContentWithImageDetails:(NSString *)searchResultStr itsThumbURLString:(NSString *)thumbURLString andFullImageURLString:(NSString *)fullImageURLString;
 

@@ -120,24 +120,28 @@
     if (!picture) { //if not cached yet
         imageContentObject = [self.searchResultsArray objectAtIndex:indexPath.row];
         cell.imageView.image = imageContentObject.thumbImage;
-        
-        [FileDownloadManager downloadAndGetImageForURL:imageContentObject.thumbURLStr
-                                      andKeyForCaching:searchTextfield.text
-                                          forRowNumber:indexPath.row
-                                                 block:^(BOOL succeeded, UIImage *image, NSError *error)
-         {
-             if (succeeded) {
-                 dispatch_async(dispatch_get_main_queue(), ^{
- //                    NSLog(@"downloaded image - %@", searchTextfield.text);
-                     cell.cellImageView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 70);
-                     UIImage* resizedImage = [image resizeImageToWidth:image.size.width andHeight:70];
-                     cell.cellImageView.image = resizedImage;
-                     [[AppCache sharedAppCache] setImage:resizedImage forString:searchTextfield.text forRow:indexPath.row];
-                 });
-             }else{
-                 NSLog(@"Error in downloading the image in cellForRowAtIndexPath - %@", error);
-             }
-         }];
+        if (imageContentObject.thumbImageDownloaded == NO){
+            [FileDownloadManager downloadAndGetImageForURL:imageContentObject.thumbURLStr
+                                          andKeyForCaching:searchTextfield.text
+                                              forRowNumber:indexPath.row
+                                                     block:^(BOOL succeeded, UIImage *image, NSError *error)
+             {
+                 if (succeeded) {
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                                             NSLog(@"downloaded image - %@", searchTextfield.text);
+                         cell.cellImageView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 170);
+                         UIImage* resizedImage = [image resizeImageToWidth:image.size.width andHeight:170];
+                         imageContentObject.thumbImageDownloaded = YES;
+                         imageContentObject.thumbImage = resizedImage;
+                         cell.cellImageView.image = resizedImage;
+
+                         [[AppCache sharedAppCache] setImage:resizedImage forString:searchTextfield.text forRow:indexPath.row];
+                     });
+                 }else{
+                     NSLog(@"Error in downloading the image in cellForRowAtIndexPath - %@", error);
+                 }
+             }];
+        }
     }else{
         cell.cellImageView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, picture.size.height);
 //        NSLog(@"From cache - %@", searchTextfield.text);
@@ -151,7 +155,7 @@
 
 #pragma mark - UITableViewDelegate methods
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return  70;
+    return  170;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
