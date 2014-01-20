@@ -68,6 +68,7 @@
 
 -(void) getImagesForSearchStr:(NSString*) searchText
 {
+    //Remove the cache for old strings here
 
     [GoogleImageApiHelper getImagesForSearchInput: searchText withBlock:^(BOOL succeeded, NSMutableArray *imageContentArray, NSError *error){
         if (succeeded) {
@@ -114,10 +115,11 @@
     }else{
         //        NSLog(@"reused a cell!!!!!!");
     }
-    UIImage *picture = [[AppCache sharedAppCache] getImageForString:searchTextfield.text forRow:indexPath.row];
+    UIImage *picture = nil;//[[AppCache sharedAppCache] getImageForString:searchTextfield.text forRow:indexPath.row];
     
     if (!picture) { //if not cached yet
         imageContentObject = [self.searchResultsArray objectAtIndex:indexPath.row];
+        cell.imageView.image = imageContentObject.thumbImage;
         
         [FileDownloadManager downloadAndGetImageForURL:imageContentObject.thumbURLStr
                                       andKeyForCaching:searchTextfield.text

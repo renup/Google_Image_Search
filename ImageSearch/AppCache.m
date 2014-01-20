@@ -60,7 +60,6 @@
 
 -(void)cleanUpCacheExceptFinalSearchString:(NSString *)finalSearchString
 {
-    return;
     NSMutableArray *keysToKeep = [[NSMutableArray alloc] init];
     if (finalSearchString != nil && finalSearchString.length > 1) {
         for(NSString *searchString in keysArray){

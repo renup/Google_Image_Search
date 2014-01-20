@@ -92,14 +92,14 @@
                           block:(void (^)(BOOL succeeded, UIImage *image, NSError *error))blockAfterCompletion
 {
     
-    UIImage *picFromCache = [[AppCache sharedAppCache] getImageForString:searchString forRow:rowNumber];
-    
-    //if image found in cache then send it to the calling class
-    if (picFromCache) {
-        if (blockAfterCompletion)
-            blockAfterCompletion(TRUE, picFromCache, nil);
-        
-    }else{ //downloading the image as it is not cached yet
+//    UIImage *picFromCache = [[AppCache sharedAppCache] getImageForString:searchString forRow:rowNumber];
+//    
+//    //if image found in cache then send it to the calling class
+//    if (picFromCache) {
+//        if (blockAfterCompletion)
+//            blockAfterCompletion(TRUE, picFromCache, nil);
+//        
+//    }else{ //downloading the image as it is not cached yet
         if (imageString != nil) {
             
             [self downloadTheFile:imageString block:^(BOOL succeeded, NSData *data, NSError *error) {
@@ -119,7 +119,6 @@
         }else{
             NSLog(@"No image URL string passed");
         }
-    }
 }
 
 
