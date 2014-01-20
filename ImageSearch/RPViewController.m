@@ -10,8 +10,7 @@
 #import "GoogleImageApiHelper.h"
 #import "RPImageContent.h"
 #import "RPBaseCell.h"
-#import "FileDownloadManager.h"
-#import "UIImage+ImageManager.h"
+#import "RPDetailViewController.h"
 
 @interface RPViewController (){
     RPImageContent *imageContentObject;
@@ -29,6 +28,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        
+    }
+    
     self.searchResultsArray = [[NSMutableArray alloc] init];
  //   [self configureSearchBarView:searchTextfield];
 }
@@ -40,12 +45,9 @@
 }
 
 
-//
-//
-//#pragma mark -
-//#pragma mark UISearchDisplayController Delegate Methods
-//
 
+#pragma mark -
+#pragma mark UISearchDisplayController Delegate Methods
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar                    // called when cancel button pressed
 {
@@ -159,7 +161,17 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    RPImageContent *imageObject = [self.searchResultsArray objectAtIndex:indexPath.row];
-    
+    imageContentObject = [self.searchResultsArray objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"ViewControllerToDetailVC" sender:self];
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    RPDetailViewController *photoDetailVC = [segue destinationViewController];
+    photoDetailVC.fullImageURLString = imageContentObject.originalImageURLStr;
+    photoDetailVC.searchString = searchTextfield.text;
+
+}
+
+
 @end
