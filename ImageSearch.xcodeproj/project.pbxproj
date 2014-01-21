@@ -21,7 +21,6 @@
 		AF986E721889BCA700A8D42C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF986E541889BCA600A8D42C /* UIKit.framework */; };
 		AF986E7A1889BCA700A8D42C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AF986E781889BCA700A8D42C /* InfoPlist.strings */; };
 		AF986E7C1889BCA700A8D42C /* ImageSearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AF986E7B1889BCA700A8D42C /* ImageSearchTests.m */; };
-		AF986E861889E4EE00A8D42C /* searchTextField.png in Resources */ = {isa = PBXBuildFile; fileRef = AF986E851889E4EE00A8D42C /* searchTextField.png */; };
 		AF986E99188AC03D00A8D42C /* GoogleImageApiHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AF986E98188AC03D00A8D42C /* GoogleImageApiHelper.m */; };
 		AF986E9C188ACB7300A8D42C /* RPImageContent.m in Sources */ = {isa = PBXBuildFile; fileRef = AF986E9B188ACB7300A8D42C /* RPImageContent.m */; };
 		AF986EA0188B352B00A8D42C /* RPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = AF986E9F188B352B00A8D42C /* RPConstants.m */; };
@@ -32,6 +31,11 @@
 		AF986EB0188CFDBD00A8D42C /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = AF986EAE188CFDBD00A8D42C /* Placeholder.png */; };
 		AF986EB1188CFDBD00A8D42C /* Placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF986EAF188CFDBD00A8D42C /* Placeholder@2x.png */; };
 		AF986EB4188D164A00A8D42C /* UIImage+ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AF986EB3188D164A00A8D42C /* UIImage+ImageManager.m */; };
+		AF986EB7188E281500A8D42C /* NetworkServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AF986EB6188E281500A8D42C /* NetworkServices.m */; };
+		AF986EBA188E35B700A8D42C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = AF986EB9188E35B700A8D42C /* MBProgressHUD.m */; };
+		AF986EBF188E360200A8D42C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = AF986EBE188E360200A8D42C /* Reachability.m */; };
+		AF986EC3188E363A00A8D42C /* wifi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF986EC1188E363A00A8D42C /* wifi@2x.png */; };
+		AF986EC4188E363A00A8D42C /* wifi.png in Resources */ = {isa = PBXBuildFile; fileRef = AF986EC2188E363A00A8D42C /* wifi.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +68,6 @@
 		AF986E771889BCA700A8D42C /* ImageSearchTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ImageSearchTests-Info.plist"; sourceTree = "<group>"; };
 		AF986E791889BCA700A8D42C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AF986E7B1889BCA700A8D42C /* ImageSearchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageSearchTests.m; sourceTree = "<group>"; };
-		AF986E851889E4EE00A8D42C /* searchTextField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchTextField.png; sourceTree = "<group>"; };
 		AF986E97188AC03D00A8D42C /* GoogleImageApiHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleImageApiHelper.h; sourceTree = "<group>"; };
 		AF986E98188AC03D00A8D42C /* GoogleImageApiHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleImageApiHelper.m; sourceTree = "<group>"; };
 		AF986E9A188ACB7300A8D42C /* RPImageContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPImageContent.h; path = ../RPImageContent.h; sourceTree = "<group>"; };
@@ -83,6 +86,14 @@
 		AF986EAF188CFDBD00A8D42C /* Placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Placeholder@2x.png"; sourceTree = "<group>"; };
 		AF986EB2188D164A00A8D42C /* UIImage+ImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageManager.h"; sourceTree = "<group>"; };
 		AF986EB3188D164A00A8D42C /* UIImage+ImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageManager.m"; sourceTree = "<group>"; };
+		AF986EB5188E281500A8D42C /* NetworkServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkServices.h; sourceTree = "<group>"; };
+		AF986EB6188E281500A8D42C /* NetworkServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkServices.m; sourceTree = "<group>"; };
+		AF986EB8188E35B700A8D42C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		AF986EB9188E35B700A8D42C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		AF986EBD188E360200A8D42C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		AF986EBE188E360200A8D42C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		AF986EC1188E363A00A8D42C /* wifi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wifi@2x.png"; sourceTree = "<group>"; };
+		AF986EC2188E363A00A8D42C /* wifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wifi.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +161,7 @@
 				AF986E601889BCA600A8D42C /* RPAppDelegate.m */,
 				AF986E621889BCA600A8D42C /* Main.storyboard */,
 				AF986E681889BCA600A8D42C /* Images.xcassets */,
+				AF986EBB188E35C000A8D42C /* External Libraries */,
 				AF986E571889BCA600A8D42C /* Supporting Files */,
 			);
 			path = ImageSearch;
@@ -158,9 +170,7 @@
 		AF986E571889BCA600A8D42C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				AF986EAE188CFDBD00A8D42C /* Placeholder.png */,
-				AF986EAF188CFDBD00A8D42C /* Placeholder@2x.png */,
-				AF986E851889E4EE00A8D42C /* searchTextField.png */,
+				AF986EC5188E363F00A8D42C /* Images */,
 				AF986E581889BCA600A8D42C /* ImageSearch-Info.plist */,
 				AF986E591889BCA600A8D42C /* InfoPlist.strings */,
 				AF986E5C1889BCA600A8D42C /* main.m */,
@@ -196,6 +206,8 @@
 				AF986EA5188B6D6900A8D42C /* FileDownloadManager.m */,
 				AF986E97188AC03D00A8D42C /* GoogleImageApiHelper.h */,
 				AF986E98188AC03D00A8D42C /* GoogleImageApiHelper.m */,
+				AF986EB5188E281500A8D42C /* NetworkServices.h */,
+				AF986EB6188E281500A8D42C /* NetworkServices.m */,
 			);
 			name = "Helper Class";
 			sourceTree = "<group>";
@@ -231,6 +243,44 @@
 				AF986EA9188B894E00A8D42C /* RPBaseCell.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		AF986EBB188E35C000A8D42C /* External Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				AF986EC0188E360800A8D42C /* Reachability */,
+				AF986EBC188E35D800A8D42C /* MBProgressHud */,
+			);
+			name = "External Libraries";
+			sourceTree = "<group>";
+		};
+		AF986EBC188E35D800A8D42C /* MBProgressHud */ = {
+			isa = PBXGroup;
+			children = (
+				AF986EB8188E35B700A8D42C /* MBProgressHUD.h */,
+				AF986EB9188E35B700A8D42C /* MBProgressHUD.m */,
+			);
+			name = MBProgressHud;
+			sourceTree = "<group>";
+		};
+		AF986EC0188E360800A8D42C /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				AF986EBD188E360200A8D42C /* Reachability.h */,
+				AF986EBE188E360200A8D42C /* Reachability.m */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
+		AF986EC5188E363F00A8D42C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				AF986EC1188E363A00A8D42C /* wifi@2x.png */,
+				AF986EC2188E363A00A8D42C /* wifi.png */,
+				AF986EAE188CFDBD00A8D42C /* Placeholder.png */,
+				AF986EAF188CFDBD00A8D42C /* Placeholder@2x.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,9 +361,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF986EB0188CFDBD00A8D42C /* Placeholder.png in Resources */,
+				AF986EC3188E363A00A8D42C /* wifi@2x.png in Resources */,
+				AF986EC4188E363A00A8D42C /* wifi.png in Resources */,
 				AF986E691889BCA600A8D42C /* Images.xcassets in Resources */,
 				AF986EB1188CFDBD00A8D42C /* Placeholder@2x.png in Resources */,
-				AF986E861889E4EE00A8D42C /* searchTextField.png in Resources */,
 				AF986E5B1889BCA600A8D42C /* InfoPlist.strings in Resources */,
 				AF986E641889BCA600A8D42C /* Main.storyboard in Resources */,
 			);
@@ -336,12 +387,15 @@
 			files = (
 				AF986E99188AC03D00A8D42C /* GoogleImageApiHelper.m in Sources */,
 				AF986E611889BCA600A8D42C /* RPAppDelegate.m in Sources */,
+				AF986EB7188E281500A8D42C /* NetworkServices.m in Sources */,
 				AF986EA6188B6D6900A8D42C /* FileDownloadManager.m in Sources */,
 				AF986E9C188ACB7300A8D42C /* RPImageContent.m in Sources */,
 				AF986EB4188D164A00A8D42C /* UIImage+ImageManager.m in Sources */,
 				AF986E5D1889BCA600A8D42C /* main.m in Sources */,
 				AF986EAA188B894E00A8D42C /* RPBaseCell.m in Sources */,
 				AF986EA3188B660F00A8D42C /* RPDetailViewController.m in Sources */,
+				AF986EBA188E35B700A8D42C /* MBProgressHUD.m in Sources */,
+				AF986EBF188E360200A8D42C /* Reachability.m in Sources */,
 				AF986E671889BCA600A8D42C /* RPViewController.m in Sources */,
 				AF986EAD188C810100A8D42C /* AppCache.m in Sources */,
 				AF986EA0188B352B00A8D42C /* RPConstants.m in Sources */,

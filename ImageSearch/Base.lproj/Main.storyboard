@@ -5,19 +5,19 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--View Controller - Google Image Search-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="RPViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="EzT-W1-gP4"/>
-                        <viewControllerLayoutGuide type="bottom" id="Cs8-zC-G73"/>
+                        <viewControllerLayoutGuide type="top" id="nX7-Yv-6rM"/>
+                        <viewControllerLayoutGuide type="bottom" id="HBA-a9-2VJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Google Image Search" translatesAutoresizingMaskIntoConstraints="NO" id="exH-s1-8zJ">
+                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Type Your Search here" translatesAutoresizingMaskIntoConstraints="NO" id="exH-s1-8zJ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -28,7 +28,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="sbD-ty-Hmo"/>
+                    <navigationItem key="navigationItem" title="Google Image Search" id="sbD-ty-Hmo"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="I7O-RA-St0" id="5uM-TW-gS6"/>
                         <outlet property="searchTextfield" destination="exH-s1-8zJ" id="ZnT-g0-Ez2"/>
@@ -53,8 +53,8 @@
             <objects>
                 <viewController id="maM-Kb-pXc" customClass="RPDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="YLB-Kn-3vO"/>
-                        <viewControllerLayoutGuide type="bottom" id="G1W-Jw-Jnt"/>
+                        <viewControllerLayoutGuide type="top" id="B01-yj-8pB"/>
+                        <viewControllerLayoutGuide type="bottom" id="GEe-XJ-fdQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YhU-aW-ILp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>

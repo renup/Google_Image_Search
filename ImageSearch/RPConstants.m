@@ -10,7 +10,6 @@
 
 @implementation RPConstants
 
-//NSString *const kMatchingSearchText                     = @"contentNoFormatting";
 NSString *const kMatchingSearchText                     = @"titleNoFormatting";
 
 
@@ -20,5 +19,6 @@ NSString *const kOriginalImageURLString                 = @"url";
 
 # pragma mark - Cell Dimensions
 CGFloat const kCellInsetWidth = 20.0f;
+CGFloat const kCellHeight     = 174.0f;
 
 @end

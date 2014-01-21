@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "UIImage+ImageManager.h"
-#import "FileDownloadManager.h" //Imported in .h file because note that RPViewController class has imported RPDetailViewController. That makes all imports in this class available for RPViewController class as well which includes the FileDownloadManager and UIImage+ImageManager class also.
+#import "FileDownloadManager.h"
+#import "MBProgressHUD.h"
 
-
-
+/**This class shows the full image of the thumb image selected in RPViewController */
 @interface RPDetailViewController : UIViewController
 
 @property (nonatomic)NSString *fullImageURLString;

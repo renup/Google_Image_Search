@@ -36,62 +36,12 @@
 }
 
 
-+(void)downloadAndGetJSONForURL:(NSString *)URLStr
-                          block:(void (^)(BOOL succeeded, NSArray* jsonArr, NSError *error))blockForCompletion
-{
-    //applications Documents directory path
-    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    
-    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"data.json"];
-    
-    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
-    
-    if (!fileExists) {
-        
-       [self downloadTheFile:URLStr block:^(BOOL succeeded, NSData *data, NSError *error) {
-
-           if (succeeded){
-               //Saving the file locally
-                [data writeToFile:filePath atomically:YES];
-               
-               if (blockForCompletion){
-                   NSError *jsonError;
-                   //Parsing/Serializing the JSON file and returning the result in the calling class which in this case will be MasterViewController. This method returns an array of image dictionary items.
-                   NSArray* serializedJSONArr = [NSJSONSerialization
-                                                 JSONObjectWithData:data
-                                                 options:kNilOptions
-                                                 error:&jsonError];
-                   blockForCompletion(TRUE, serializedJSONArr, nil);
-               }
-               
-           }else{
-               if (blockForCompletion)
-                   blockForCompletion(FALSE, nil, error);
-           }
-       }];
-        
-    }else{
-        
-        NSData *data = [NSData dataWithContentsOfFile:filePath];
-        if (blockForCompletion) {
-            NSError *jsonError;
-            //Parsing/Serializing the JSON file and returning the result in the calling class which in this case will be MasterViewController. This method returns an array of image dictionary items.
-            NSArray* serializedJSONArr = [NSJSONSerialization
-                                          JSONObjectWithData:data
-                                          options:kNilOptions
-                                          error:&jsonError];
-            blockForCompletion(TRUE, serializedJSONArr, nil);
-        }
-    }
-}
-
-
 +(void)downloadAndGetImageForURL:(NSString *)imageString
                 andKeyForCaching:(NSString *)searchString
                     forRowNumber:(int)rowNumber
                           block:(void (^)(BOOL succeeded, UIImage *image, NSError *error))blockAfterCompletion
 {
-    
+  /* Commenting AppCache logic */
 //    UIImage *picFromCache = [[AppCache sharedAppCache] getImageForString:searchString forRow:rowNumber];
 //    
 //    //if image found in cache then send it to the calling class
@@ -107,7 +57,7 @@
                 if (succeeded) {
                     UIImage *image = [UIImage imageWithData:data];
                     
-                    [[AppCache sharedAppCache] setImage:image forString:searchString forRow:rowNumber];
+//                    [[AppCache sharedAppCache] setImage:image forString:searchString forRow:rowNumber];
 
                     if (blockAfterCompletion)
                         blockAfterCompletion(TRUE, image, nil);

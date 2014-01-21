@@ -31,25 +31,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
 	// Do any additional setup after loading the view.
     [FileDownloadManager downloadAndGetImageForURL:self.fullImageURLString andKeyForCaching:self.searchString forRowNumber: 100 block:^(BOOL succeeded, UIImage *image, NSError *error) {
         if (succeeded) {
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 UIImage * resizedImage;
-                resizedImage = [image resizeImageToWidth:self.photoView.frame.size.width andHeight:self.photoView.frame.size.height];
+                resizedImage = image;
+                //resizedImage = [image resizeImageToWidth:self.photoView.frame.size.width andHeight:self.photoView.frame.size.height];
                 
-                if (resizedImage.size.width > self.view.frame.size.width)
-                    self.scrollView.contentSize = CGSizeMake(resizedImage.size.width + (resizedImage.size.width - self.view.frame.size.width), resizedImage.size.height);
-                else if (resizedImage.size.height > self.view.frame.size.height)
-                    self.scrollView.contentSize = CGSizeMake(resizedImage.size.width, resizedImage.size.height + (resizedImage.size.height - self.view.frame.size.height));
-                else
-                    self.scrollView.contentSize = CGSizeMake(resizedImage.size.width, resizedImage.size.height);
-
+//                if (resizedImage.size.width > self.view.frame.size.width)
+//                    self.scrollView.contentSize = CGSizeMake(resizedImage.size.width + (resizedImage.size.width - self.view.frame.size.width), resizedImage.size.height);
+//                else if (resizedImage.size.height > self.view.frame.size.height)
+//                    self.scrollView.contentSize = CGSizeMake(resizedImage.size.width, resizedImage.size.height + (resizedImage.size.height - self.view.frame.size.height));
+//                else
+//                    self.scrollView.contentSize = CGSizeMake(resizedImage.size.width, resizedImage.size.height);
+                self.scrollView.contentSize = CGSizeMake(resizedImage.size.width, resizedImage.size.height);
+                //self.scrollView.frame
 
                 self.photoView.image = resizedImage;
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
             });
         }else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Image Download Error" message:@"Sorry couldn't download the full picture" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            
             NSLog(@"Error while downloading full image in DetailVC");
         }
     }];

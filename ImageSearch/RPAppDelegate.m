@@ -10,9 +10,18 @@
 
 @implementation RPAppDelegate
 
+@synthesize networkConnectionStatus, networkType;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
+    
+    self.networkConnectionStatus=YES;
+    
+    internetReach = [Reachability reachabilityForInternetConnection];
+	[internetReach startNotifier];
+	[self updateInterfaceWithReachability: internetReach];
     return YES;
 }
 							
@@ -42,5 +51,100 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark Reachability methods
+//Called by Reachability whenever status changes.
+- (void) reachabilityChanged: (NSNotification* )note
+{
+    Reachability* currentReachability = [note object];
+    NSParameterAssert([currentReachability isKindOfClass: [Reachability class]]);
+    [self updateInterfaceWithReachability: currentReachability];
+}
+
+- (void) updateInterfaceWithReachability: (Reachability*) currentReach
+{
+   	if(currentReach == internetReach)
+	{
+		[self configureNetworkStatus:currentReach];
+	}
+	else if(currentReach == wifiReach)
+	{
+        [self configureNetworkStatus:currentReach];
+	}
+	
+}
+
+-(void)configureNetworkStatus:(Reachability*) curReach{
+    NetworkStatus internetStatus = [curReach currentReachabilityStatus];
+    
+    switch (internetStatus)
+    {
+        case NotReachable:
+        {
+            self.networkType= @"No network";
+            
+            self.networkConnectionStatus=NO;
+            
+            [self noInternet];
+            break;
+        }
+            
+        case ReachableViaWWAN:
+        {
+            if (self.networkConnectionStatus==NO) {
+                
+                [self networkConnect];
+                
+            }
+            self.networkType= @"WWAN";
+            
+            self.networkConnectionStatus=YES;
+            break;
+        }
+        case ReachableViaWiFi:
+        {
+            if (self.networkConnectionStatus==NO) {
+                
+                [self networkConnect];
+            }
+            self.networkType= @"WIFI";
+            
+            self.networkConnectionStatus=YES;
+            break;
+        }
+    }
+}
+
+
+-(void)noInternet
+{
+    UIImage *backgroundImage = [UIImage imageNamed:@"noImage.png"];
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImage];
+    backgroundImageView.frame = CGRectMake(0, 0, self.window.rootViewController.view.frame.size.width, self.window.rootViewController.view.frame.size.height);
+    networkView  = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    networkView.backgroundColor = [UIColor whiteColor];
+    [networkView addSubview:backgroundImageView];
+    
+    UILabel *connectivityStatusLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 50, self.window.rootViewController.view.frame.size.width, 50)];
+    connectivityStatusLabel.textColor=[UIColor blackColor];
+    connectivityStatusLabel.font=[UIFont boldSystemFontOfSize:25.0f];
+    connectivityStatusLabel.text=@"No Internet Connection";
+    connectivityStatusLabel.textAlignment = NSTextAlignmentCenter;
+    connectivityStatusLabel.backgroundColor=[UIColor clearColor];
+    [networkView addSubview:connectivityStatusLabel];
+    
+    UIImage *wifiImage = [UIImage imageNamed:@"wifi.png"];
+    UIImageView *wifiImageView = [[UIImageView alloc] initWithImage:wifiImage];
+    wifiImageView.frame=CGRectMake(self.window.rootViewController.view.frame.size.width/4,120,wifiImage.size.width,wifiImage.size.height);
+    wifiImageView.center = self.window.rootViewController.view.center;
+    [networkView addSubview:wifiImageView];
+    
+    [self.window.rootViewController.view addSubview: networkView];
+}
+
+-(void)networkConnect{
+    [networkView removeFromSuperview];
+}
+
 
 @end

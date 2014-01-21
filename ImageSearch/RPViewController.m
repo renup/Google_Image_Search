@@ -29,13 +29,9 @@
 {
     [super viewDidLoad];
     if([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
-    {
         self.edgesForExtendedLayout = UIRectEdgeNone;
-        
-    }
     
     self.searchResultsArray = [[NSMutableArray alloc] init];
- //   [self configureSearchBarView:searchTextfield];
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,7 +48,7 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar                    // called when cancel button pressed
 {
     [self.searchResultsArray removeAllObjects];
-    [[AppCache sharedAppCache] cleanUpWholeCache];
+//    [[AppCache sharedAppCache] cleanUpWholeCache];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText   // called when text changes (including clear)
@@ -60,10 +56,9 @@
     if ([searchText length]>0) {
         [self.searchResultsArray removeAllObjects];
         [self getImagesForSearchStr:searchText];
-        NSLog(@"SEARCHING %@", searchText);
     }else{
         [self.searchResultsArray removeAllObjects];
-        [[AppCache sharedAppCache] cleanUpWholeCache];
+//        [[AppCache sharedAppCache] cleanUpWholeCache];
     }
     
 }
@@ -71,28 +66,22 @@
 -(void) getImagesForSearchStr:(NSString*) searchText
 {
     //Remove the cache for old strings here
-
+//    [[AppCache sharedAppCache] cleanUpCacheExceptFinalSearchString:searchText];
+    
     [GoogleImageApiHelper getImagesForSearchInput: searchText withBlock:^(BOOL succeeded, NSMutableArray *imageContentArray, NSError *error){
         if (succeeded) {
             self.searchResultsArray = imageContentArray;
-            NSLog(@"Size of imageContentArray = %d",[imageContentArray count]);
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                //            [self updateFilteredContentForSearchString:searchString];
                 [self.searchDisplayController.searchResultsTableView reloadData];
             });
-        }else
-            NSLog(@"getting imagecontent failed");
+        }else{
+            NSLog(@"Getting ERROR response from Google = %@", error);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error while getting Images" message:@"Sorry couldn't fetch Images at this time" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
     }];
 }
-
-
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar // called when text ends editing - search button clicked or scrolling the tableview and the keyboard gets dismissed
-{
-//    NSLog(@"cleaning partial cache");
-}
-
-
 
 #pragma mark - Table View
 
@@ -117,12 +106,14 @@
     }else{
         //        NSLog(@"reused a cell!!!!!!");
     }
-    UIImage *picture = nil;//[[AppCache sharedAppCache] getImageForString:searchTextfield.text forRow:indexPath.row];
-    
+
+    UIImage *picture = nil; //[[AppCache sharedAppCache] getImageForString:searchTextfield.text forRow:indexPath.row];
+
     if (!picture) { //if not cached yet
         imageContentObject = [self.searchResultsArray objectAtIndex:indexPath.row];
         cell.imageView.image = imageContentObject.thumbImage;
         if (imageContentObject.thumbImageDownloaded == NO){
+            
             [FileDownloadManager downloadAndGetImageForURL:imageContentObject.thumbURLStr
                                           andKeyForCaching:searchTextfield.text
                                               forRowNumber:indexPath.row
@@ -130,25 +121,28 @@
              {
                  if (succeeded) {
                      dispatch_async(dispatch_get_main_queue(), ^{
-                                             NSLog(@"downloaded image - %@", searchTextfield.text);
-                         cell.cellImageView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 170);
-                         UIImage* resizedImage = [image resizeImageToWidth:image.size.width andHeight:170];
+                         UIImage* resizedImage = [image resizeImageToWidth:image.size.width andHeight:kCellHeight];
+                         cell.cellImageView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, kCellHeight);
                          imageContentObject.thumbImageDownloaded = YES;
                          imageContentObject.thumbImage = resizedImage;
                          cell.cellImageView.image = resizedImage;
 
-                         [[AppCache sharedAppCache] setImage:resizedImage forString:searchTextfield.text forRow:indexPath.row];
+//                         [[AppCache sharedAppCache] setImage:resizedImage forString:searchTextfield.text forRow:indexPath.row];
                      });
                  }else{
+                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Image Download Error" message:@"Sorry couldn't download the search pictures" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                     [alert show];
+                     
                      NSLog(@"Error in downloading the image in cellForRowAtIndexPath - %@", error);
                  }
              }];
         }
-    }else{
-        cell.cellImageView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, picture.size.height);
-//        NSLog(@"From cache - %@", searchTextfield.text);
-        cell.cellImageView.image = picture;
     }
+//    else{
+////        cell.cellImageView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, picture.size.height);
+////        NSLog(@"From cache - %@", searchTextfield.text);
+//        cell.cellImageView.image = picture;
+//    }
     
     return cell;
 }
@@ -157,7 +151,7 @@
 
 #pragma mark - UITableViewDelegate methods
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return  170;
+    return  kCellHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

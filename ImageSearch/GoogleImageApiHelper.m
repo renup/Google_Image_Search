@@ -8,17 +8,21 @@
 
 #import "GoogleImageApiHelper.h"
 #import "RPImageContent.h"
+#import "NetworkServices.h"
 
 @implementation GoogleImageApiHelper
+
+
+// reference: https://developers.google.com/image-search/v1/jsondevguide#basic_query
 
 + (void)getImagesForSearchInput:(NSString *)searchText withBlock:(void (^)(BOOL succeeded, NSMutableArray *imageContentArray, NSError *error))completionBlock
 {
     if (searchText.length > 0) {
         NSString *queryString;
         
-        
-        NSString* myIP = @"107.3.152.107";
-        
+        /* Getting IP address here. We need it because otherwise we get 403 error */
+        NSString* myIP = [NetworkServices ipaddr];
+
         if ([searchText componentsSeparatedByString:@" "].count > 0) {
             NSMutableString *stringWithSpaces = [[searchText stringByReplacingOccurrencesOfString:@" " withString:@"%20"] mutableCopy];
             queryString =[NSString stringWithFormat:@"https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=%@&userip=%@",stringWithSpaces, myIP];
@@ -26,9 +30,9 @@
             queryString =[NSString stringWithFormat:@"https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=%@&userip=%@",searchText, myIP];
         }
         
+        //Downloading image data and parsing it to extract reqired elements out of the inner dictionaries
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
             NSURL *jsonURL = [NSURL URLWithString:queryString];
-            NSLog(@"about to download %@", queryString);
             NSError* err;
             NSData *jsonData = [NSData dataWithContentsOfURL:jsonURL options:NSDataReadingUncached error:&err];
 
@@ -50,13 +54,16 @@
                             [imageContentArray addObject:imageContentObj];
                         }
                         
-                        NSLog(@"DONE download %@ - size:%d", queryString, [imageContentArray count]);
-                        
                         if(completionBlock)
                             completionBlock(TRUE, imageContentArray, nil);
                         
                     }else{
-                        NSLog(@"ERROR while downloading: %@, status: %@ ", [parsedJSON objectForKey:@"responseDetails"], [parsedJSON objectForKey:@"responseStatus"]);
+                        
+//                        NSLog(@"ERROR while downloading: %@, status: %@ ", [parsedJSON objectForKey:@"responseDetails"], [parsedJSON objectForKey:@"responseStatus"]);
+                        err = [parsedJSON objectForKey:@"responseDetails"], [parsedJSON objectForKey:@"responseStatus"];
+                       
+                        if(completionBlock)
+                            completionBlock(FALSE, nil, err);
                     }
                 }else{
                     NSLog(@"Error with query string");
