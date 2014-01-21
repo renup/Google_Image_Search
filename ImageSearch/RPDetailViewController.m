@@ -40,18 +40,7 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 UIImage * resizedImage;
-//                resizedImage = image;
-                resizedImage = [image resizeImageToWidth:self.photoView.frame.size.width andHeight:self.photoView.frame.size.height];
-//
-//                if (resizedImage.size.width > self.view.frame.size.width)
-//                    self.scrollView.contentSize = CGSizeMake(resizedImage.size.width + (resizedImage.size.width - self.view.frame.size.width), resizedImage.size.height);
-//                else if (resizedImage.size.height > self.view.frame.size.height)
-//                    self.scrollView.contentSize = CGSizeMake(resizedImage.size.width, resizedImage.size.height + (resizedImage.size.height - self.view.frame.size.height));
-//                else
-//                    self.scrollView.contentSize = CGSizeMake(resizedImage.size.width, resizedImage.size.height);
-////                self.scrollView.contentSize = CGSizeMake(resizedImage.size.width, resizedImage.size.height);
-//                //self.scrollView.frame
-
+               resizedImage = [image resizeImageToWidth:self.photoView.frame.size.width andHeight:self.photoView.frame.size.height];
                 self.photoView.image = resizedImage;
                 [self centerImage];
 
