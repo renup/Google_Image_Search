@@ -40,19 +40,21 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 UIImage * resizedImage;
-                resizedImage = image;
-                //resizedImage = [image resizeImageToWidth:self.photoView.frame.size.width andHeight:self.photoView.frame.size.height];
-                
+//                resizedImage = image;
+                resizedImage = [image resizeImageToWidth:self.photoView.frame.size.width andHeight:self.photoView.frame.size.height];
+//
 //                if (resizedImage.size.width > self.view.frame.size.width)
 //                    self.scrollView.contentSize = CGSizeMake(resizedImage.size.width + (resizedImage.size.width - self.view.frame.size.width), resizedImage.size.height);
 //                else if (resizedImage.size.height > self.view.frame.size.height)
 //                    self.scrollView.contentSize = CGSizeMake(resizedImage.size.width, resizedImage.size.height + (resizedImage.size.height - self.view.frame.size.height));
 //                else
 //                    self.scrollView.contentSize = CGSizeMake(resizedImage.size.width, resizedImage.size.height);
-                self.scrollView.contentSize = CGSizeMake(resizedImage.size.width, resizedImage.size.height);
-                //self.scrollView.frame
+////                self.scrollView.contentSize = CGSizeMake(resizedImage.size.width, resizedImage.size.height);
+//                //self.scrollView.frame
 
                 self.photoView.image = resizedImage;
+                [self centerImage];
+
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
             });
         }else{
@@ -64,6 +66,39 @@
     }];
     
 }
+
+-(void)centerImage{
+    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    CGSize imageSize = self.photoView.image.size;
+    CGFloat differenceWidth = screenSize.width - imageSize.width;
+    CGFloat differenceHeight = screenSize.height - imageSize.height;
+    
+    scrollView.frame = self.view.frame;
+    
+    scrollView.contentSize = imageSize;
+    
+    if (differenceWidth <= 0 && differenceHeight >=0) {
+        self.photoView.frame = CGRectMake(0, differenceHeight/2, imageSize.width, imageSize.height);
+        [scrollView setContentOffset:CGPointMake(-(differenceWidth/2), 0) animated:NO];
+    }
+    else if (differenceHeight <=0 && differenceWidth >=0){
+        self.photoView.frame = CGRectMake(differenceWidth/2, 0, imageSize.width, imageSize.height);
+        [scrollView setContentOffset:CGPointMake(0, -(differenceHeight/2)) animated:NO];
+    }
+    else if (differenceWidth <= 0 && differenceHeight <= 0){
+        self.photoView.frame = CGRectMake(0, 0, imageSize.width, imageSize.height);
+        [scrollView setContentOffset:CGPointMake(-(differenceWidth/2), -(differenceHeight/2)) animated:NO];
+    }
+    else{
+        self.photoView.frame = CGRectMake(differenceWidth/2, differenceHeight/2, imageSize.width, imageSize.height);
+    }
+    
+    //    cellImageView.frame = CGRectMake(differenceWidth/2,differenceHeight/2,imageSize.width,imageSize.height);
+    //    [scrollView setContentOffset:CGPointMake(90, 0) animated:NO];
+    
+    [scrollView setScrollEnabled:YES];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
